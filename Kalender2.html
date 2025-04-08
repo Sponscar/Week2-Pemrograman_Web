@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalender April 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calendar {
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 800px;
+      text-align: center;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .nav-icon {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      font-size: 20px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: default;
+    }
+
+    .month-title {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      width: 14.28%;
+      height: 60px;
+      text-align: center;
+      border: 1px solid #ccc;
+      font-size: 18px;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .today {
+      background-color: red;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar">
+    <div class="calendar-header">
+      <button class="nav-icon">&lt;</button>
+      <div class="month-title">April 2025</div>
+      <button class="nav-icon">&gt;</button>
+    </div>
+
+    <table>
+      <tr>
+        <th>Minggu</th>
+        <th>Senin</th>
+        <th>Selasa</th>
+        <th>Rabu</th>
+        <th>Kamis</th>
+        <th>Jumat</th>
+        <th>Sabtu</th>
+      </tr>
+      <tr>
+        <td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+      </tr>
+      <tr>
+        <td>6</td><td>7</td><td class="today">8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+      </tr>
+      <tr>
+        <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+      </tr>
+      <tr>
+        <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
+      </tr>
+      <tr>
+        <td>27</td><td>28</td><td>29</td><td>30</td><td></td><td></td><td></td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>

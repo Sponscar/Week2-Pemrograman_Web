@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bola Canvas</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #eee;
+    }
+    canvas {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="700" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const bola = {
+      x: 0,
+      y: canvas.height / 2,
+      radius: 20,
+      dx: 2,
+      dy: 2,
+      stage: "kanan" // kanan -> turun -> kiri
+    };
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(bola.x, bola.y, bola.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "white";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function update() {
+      clearCanvas();
+
+      if (bola.stage === "kanan") {
+        bola.x += bola.dx;
+        if (bola.x + bola.radius >= canvas.width) {
+          bola.stage = "turun";
+        }
+      } else if (bola.stage === "turun") {
+        bola.y += bola.dy;
+        if (bola.y + bola.radius >= canvas.height) {
+          bola.stage = "kiri";
+        }
+      } else if (bola.stage === "kiri") {
+        bola.x -= bola.dx;
+        if (bola.x + bola.radius <= 0) {
+          cancelAnimationFrame(animation); // Hentikan animasi saat keluar kiri
+          return;
+        }
+      }
+
+      drawBall();
+      animation = requestAnimationFrame(update);
+    }
+
+    let animation = requestAnimationFrame(update);
+  </script>
+</body>
+</html>
