@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Stopwatch</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+
+    .canvas {
+      width: 700px;
+      height: 400px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #000;
+    }
+
+    .display {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .seconds {
+      color: green;
+    }
+
+    .milliseconds {
+      color: red;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .start {
+      background-color: green;
+    }
+
+    .stop {
+      background-color: orange;
+    }
+
+    .reset {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="display">
+      <span class="seconds" id="second">000</span>:<span class="milliseconds" id="millisecond">00</span>
+    </div>
+    <div class="buttons">
+      <button class="start" onclick="startTimer()">Start Timer</button>
+      <button class="stop" onclick="stopTimer()">Stop Timer</button>
+      <button class="reset" onclick="resetTimer()">Reset Timer</button>
+    </div>
+  </div>
+
+  <script>
+    let second = 0;
+    let millisecond = 0;
+    let interval;
+
+    function updateDisplay() {
+      document.getElementById('second').textContent = second.toString().padStart(3, '0');
+      document.getElementById('millisecond').textContent = millisecond.toString().padStart(2, '0');
+    }
+
+    function startTimer() {
+      if (!interval) {
+        interval = setInterval(() => {
+          millisecond += 1;
+          if (millisecond >= 100) {
+            millisecond = 0;
+            second += 1;
+          }
+          updateDisplay();
+        }, 10); // 10 ms = 0.01 sec
+      }
+    }
+
+    function stopTimer() {
+      clearInterval(interval);
+      interval = null;
+    }
+
+    function resetTimer() {
+      clearInterval(interval);
+      interval = null;
+      second = 0;
+      millisecond = 0;
+      updateDisplay();
+    }
+
+    updateDisplay(); // Set initial display
+  </script>
+</body>
+</html>
