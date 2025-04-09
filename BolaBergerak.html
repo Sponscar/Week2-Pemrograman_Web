@@ -30,7 +30,7 @@
       radius: 20,
       dx: 2,
       dy: 2,
-      stage: "kanan" // kanan -> turun -> kiri
+      stage: "kanan" 
     };
 
     function drawBall() {
@@ -61,7 +61,7 @@
       } else if (bola.stage === "kiri") {
         bola.x -= bola.dx;
         if (bola.x + bola.radius <= 0) {
-          cancelAnimationFrame(animation); // Hentikan animasi saat keluar kiri
+          cancelAnimationFrame(animation); 
           return;
         }
       }
